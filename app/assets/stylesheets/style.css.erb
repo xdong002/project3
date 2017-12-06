@@ -12,7 +12,7 @@ header {
   margin-bottom: 1%;
 }
 
-header h1 {
+.mainHeader {
   display: inline-block;
   font-size: 4vh;
   margin-top: 2vh;
@@ -125,5 +125,36 @@ header h1 {
   background-color: rgba(255, 255, 255, 0.7);
   border: 2px groove white;
   margin: 0;
-  border-collapse: collapse;
+  text-align: left;
+  padding: 2px 10px;
+}
+
+.topicTitle {
+  font-size: 3.5vh;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 30%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.topicContent {
+  font-size: 2.5vh;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 50%;
+  display: inline-block;
+  margin-left: 1%;
+  margin-top: 1%;
+  vertical-align: top;
+}
+
+.float-right {
+  float: right;
+}
+
+.noStyle {
+  text-decoration: none;
 }

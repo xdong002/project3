@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   get '/topics/new', to: 'topics#new', as: 'new_topic'
   post '/topics', to: 'topics#create'
   get '/topics/:id', to: 'topics#show', as: 'topic'
+  get '/topics/:id/edit', to: 'topics#edit', as: 'edit_topic'
+  patch "/topics/:id", to: "topics#update"
   delete '/topics/destroy/:id', to: 'topics#destroy', as: 'topic_destroy'
-  
+
 end

@@ -22,6 +22,17 @@ class TopicsController < ApplicationController
     @topic = Topic.find_by_id(params[:id])
   end
 
+  def edit
+    @topic = Topic.find_by_id(params[:id])
+
+  end
+
+  def update
+    @topic = Topic.find_by_id(params[:id])
+    @topic.update_attributes(topic_params)
+    redirect_to topics_path(@topic)
+  end
+
   def destroy
     @topic = Topic.find_by_id(params[:id])
     @topic.destroy
