@@ -24,7 +24,12 @@ class TopicsController < ApplicationController
 
   def edit
     @topic = Topic.find_by_id(params[:id])
-
+    puts current_user.id
+    puts @topic.owner_id
+    if (current_user.id.to_s != @topic.owner_id)
+      flash[:error] = 'Stop Hacking!'
+      redirect_to '/'
+    end
   end
 
   def update
