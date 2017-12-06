@@ -1,0 +1,129 @@
+html body{
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  background-image: url('<%= asset_path("background.jpg") %>');
+  background-size: cover;
+}
+
+header {
+  background-color: BurlyWood;
+  height: 10vh;
+  margin-bottom: 1%;
+}
+
+header h1 {
+  display: inline-block;
+  font-size: 4vh;
+  margin-top: 2vh;
+}
+
+.fix {
+  clear: both;
+}
+
+.headerLogo {
+  height: 100%;
+  width: 20%;
+  float: left;
+}
+
+.userSession {
+  height: 100%;
+  width: 20%;
+  float: right;
+}
+
+.container {
+  display: inline-block;
+  min-height: 100vh;
+  height: cover;
+  width: 70%;
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+  padding: 0;
+}
+
+.searchBar {
+  width: 100%;
+  height: 15%;
+}
+
+#custom-search-input {
+  width: 50%;
+  display: inline-block;
+  margin-top: 3%;
+}
+
+#custom-search-input button {
+    border-radius: 3px;
+    color:white;
+}
+
+.sessionsRenderBox {
+  width: 49%;
+  margin: 0;
+  height: 40vh;
+  background-color: LightSeaGreen;
+  display: inline-block;
+  vertical-align: top;
+  margin-bottom: .3%;
+}
+
+.sessionHeaderBox {
+  height: 25vh;
+  width: 100%;
+  /*background-color: green;*/
+  background-color: rgba(0,0,0,.7);
+}
+
+.sessionHeader {
+  display: inline-block;
+  height: 80%;
+  width: 80%;
+  vertical-align: middle;
+  /*background-color: yellow;*/
+}
+
+.helper {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+
+.sessionLogo {
+  display: inline-block;
+  height: 100%;
+  border-radius: 50%;
+  float: left;
+  width: cover;
+}
+
+.sessionSearchBar {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  width: 50%;
+  padding-top: 2%;
+}
+
+.sessionName {
+  font-size: 5vh;
+}
+
+#sessionSearch {
+  width: 100%;
+}
+
+.topicsContainer {
+  min-height: 70vh;
+  height: cover;
+}
+
+.topicBox {
+  height: 13vh;
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 2px groove white;
+  margin: 0;
+  border-collapse: collapse;
+}

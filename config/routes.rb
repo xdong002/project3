@@ -12,4 +12,7 @@ Rails.application.routes.draw do
   get '/topics', to: 'topics#index'
   get '/topics/new', to: 'topics#new', as: 'new_topic'
   post '/topics', to: 'topics#create'
+  get '/topics/:id', to: 'topics#show', as: 'topic'
+  delete '/topics/destroy/:id', to: 'topics#destroy', as: 'topic_destroy'
+  
 end

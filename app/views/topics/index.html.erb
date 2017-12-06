@@ -1,7 +1,46 @@
-<% @topics.each do |topic| %>
-  <div>
-    <h3><%= topic.title %></h3>
-    <p><%= topic.content %></p>
+<div class="container">
+  <div class="sessionHeaderBox">
+
+    <div class="sessionHeader">
+      <img class="sessionLogo" src='<%=image_path("sessionLogo.png")%>' alt="">
+
+      <div class="sessionSearchBar">
+        <span class="sessionName">SessionName</span>
+        <br>
+        <br>
+        <div id="custom-search-input sessionSearch">
+              <div class="input-group">
+                  <input type="text" class="  search-query form-control" placeholder="Search" />
+                  <span class="input-group-btn">
+                      <button class="btn btn-danger" type="button">
+                          <span class=" glyphicon glyphicon-search"></span>
+                      </button>
+                  </span>
+              </div>
+          </div>
+      </div>
+
+    </div>
+
+    <span class="helper"></span>
+
   </div>
-  <br>
-<% end %>
+
+  <div class="topicsContainer">
+    <% @topics.each do |topic| %>
+    <%= link_to url_for(action: 'show', controller: 'topics', id: "#{topic.id}") do %>
+    <div class="topicBox">
+      <h3><%= topic.title %></h3>
+      <p><%= topic.content %></p>
+      <p><%= topic.owner_name %></p>
+      <% if @user.id.to_s === topic.owner_id %>
+        <%= link_to topic_destroy_path(topic, :id => topic.id), controller: 'topics', action: 'destroy', method: :delete, data: {confirm: 'Delete this topic?'} do %>
+          <span class="glyphicon glyphicon-trash toolBtn" title = "Delete topic"> </span>
+        <% end %>
+        <% end %>
+    </div>
+    <% end %>
+    <% end %>
+
+  </div>
+</div>
