@@ -26,16 +26,18 @@
         <% else %>
         <button class="btn btn-default logBtn" type="button" name="signup" data-toggle="modal" data-target="#myModalSignUp">Sign Up</button>
         <button class="btn btn-default logBtn" type="button" name="signin" data-toggle="modal" data-target="#myModalSignIn">Sign In</button>
+        <%= button_to("Home", '/', method: :get, :class => " btn btn-default logBtn", form_class: "logBtn") %>
         <% end %>
     </div>
-
-
   </header>
     <% flash.each do |key, value| %>
       <div class="<%= flash_class(key) %>">
         <%= value %>
       </div>
     <% end %>
+    <img src='<%=image_path("banner.jpg")%>' class="banner">
+    <br>
+    <br>
     <%= yield %>
 
     <!-- Modal for sign in -->

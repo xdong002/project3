@@ -1,4 +1,19 @@
-<div>
+<!-- <div>
   <%= @topic.title %>
   <%= @topic.content%>
+</div> -->
+<div class="container">
+  <table style="width:100%">
+    <tr class="floor">
+      <td class="authorBox">
+        <%= @topic.owner_name %>
+      </td>
+      <td class="contentBox">
+        <h1><%= @topic.title %></h1>
+        <p><%= @topic.content%></p>
+      </td>
+    </tr>
+  </table>
+
+
 </div>

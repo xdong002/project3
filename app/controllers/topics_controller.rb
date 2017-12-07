@@ -1,7 +1,11 @@
 class TopicsController < ApplicationController
   def index
     @topics = Topic.all
-    @user = current_user
+    if current_user == nil
+      @user = User.new
+    else
+      @user = current_user
+    end
   end
 
   def new
@@ -19,10 +23,21 @@ class TopicsController < ApplicationController
   end
 
   def show
+    if current_user == nil
+      @user = User.new
+    else
+      @user = current_user
+    end
     @topic = Topic.find_by_id(params[:id])
   end
 
   def edit
+    if current_user == nil
+      @user = User.new
+    else
+      @user = current_user
+    end
+
     @topic = Topic.find_by_id(params[:id])
     puts current_user.id
     puts @topic.owner_id
