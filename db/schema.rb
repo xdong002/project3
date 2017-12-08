@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171207195656) do
+ActiveRecord::Schema.define(version: 20171208203119) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,13 @@ ActiveRecord::Schema.define(version: 20171207195656) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "rooms", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "topics", force: :cascade do |t|
     t.string "owner_id"
     t.string "owner_name"
@@ -35,6 +42,8 @@ ActiveRecord::Schema.define(version: 20171207195656) do
     t.datetime "updated_at", null: false
     t.string "title"
     t.bigint "user_id"
+    t.bigint "room_id"
+    t.index ["room_id"], name: "index_topics_on_room_id"
     t.index ["user_id"], name: "index_topics_on_user_id"
   end
 
@@ -47,5 +56,6 @@ ActiveRecord::Schema.define(version: 20171207195656) do
 
   add_foreign_key "comments", "topics"
   add_foreign_key "comments", "users"
+  add_foreign_key "topics", "rooms"
   add_foreign_key "topics", "users"
 end

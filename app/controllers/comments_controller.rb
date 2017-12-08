@@ -58,14 +58,14 @@ class CommentsController < ApplicationController
     @comment = Comment.find_by_id(params[:id])
     @comment.update_attributes(params.require(:comment).permit(:content))
     if @comment.save
-      redirect_to topics_path(@comment.topic_id)
+      redirect_to topic_path(@comment.topic_id)
     end
   end
 
   def destroy
     @comment = Comment.find_by_id(params[:id])
     @comment.destroy
-    redirect_back(fallback_location: root_path)
+    redirect_to topic_path(@comment.topic_id)
   end
 
   private

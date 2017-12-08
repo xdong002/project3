@@ -2,39 +2,43 @@
   <table style="width:100%">
     <tr class="floor">
       <td class="authorBox">
-        <%= @topic.owner_name %>
+        <img src="<%= asset_path("gameIcon.png") %>" class="gameHeadIcon">
+        <h1><%= @topic.owner_name %></h1>
       </td>
       <td class="contentBox">
         <h1><%= @topic.title %></h1>
+        <p><%= @topic.content%>
         <% if @user.id.to_s === @topic.owner_id %>
-          <%= link_to topic_destroy_path(@topic, :id => @topic.id), controller: 'topics', action: 'destroy', method: :delete, data: {confirm: 'Delete this topic?'} do %>
-            <span class="glyphicon glyphicon-trash float-right" title = "Delete topic"> </span>
+          <%= link_to topic_destroy_path(@topic, :id => @topic.id), controller: 'topics', action: 'destroy', method: :delete, data: {confirm: 'Delete this topic?'}, :class => "toolBTN float-right" do %>
+            <span class="glyphicon glyphicon-trash" title = "Delete topic"> </span>
           <% end %>
-          <%= link_to edit_topic_path(@topic, :id => @topic.id), controller: 'topics', action: 'get' do %>
-            <span class="glyphicon glyphicon-pencil float-right" title = "Edit topic"> </span>
+          <%= link_to edit_topic_path(@topic, :id => @topic.id), controller: 'topics', action: 'get', :class => "toolBTN float-right" do %>
+            <span class="glyphicon glyphicon-pencil" title = "Edit topic"> </span>
           <% end %>
         <% end %>
-        <p><%= @topic.content%></p>
+        </p>
       </td>
     </tr>
   </table>
 
-  <% @comments.each do |comment|%>
+  <% @comments.sort.each do |comment|%>
   <table style="width:100%">
     <tr class="floor">
       <td class="authorBox">
+        <img src="<%= asset_path("gameIcon.png") %>" class="gameHeadIcon">
         <h1><%= comment.owner_name%></h1>
       </td>
       <td class="contentBox">
-        <% if @user.id.to_s === comment.owner_id %>
-          <%= link_to comment_destroy_path(comment, :id => comment.id), controller: 'comments', action: 'destroy', method: :delete, data: {confirm: 'Delete this comment?'} do %>
-            <span class="glyphicon glyphicon-trash float-right" title = "Delete comment"> </span>
+        <p><%= comment.content%>
+          <% if @user.id.to_s === comment.owner_id %>
+            <%= link_to comment_destroy_path(comment, :id => comment.id), controller: 'comments', action: 'destroy', method: :delete, data: {confirm: 'Delete this comment?'}, :class => "toolBTN float-right" do %>
+              <span class="glyphicon glyphicon-trash" title = "Delete comment"> </span>
+            <% end %>
+            <%= link_to edit_comment_path(comment, :id => comment.id), controller: 'comments', action: 'get', :class => "toolBTN float-right" do %>
+              <span class="glyphicon glyphicon-pencil" title = "Edit comment"> </span>
+            <% end %>
           <% end %>
-          <%= link_to edit_comment_path(comment, :id => comment.id), controller: 'comments', action: 'get' do %>
-            <span class="glyphicon glyphicon-pencil float-right" title = "Edit comment"> </span>
-          <% end %>
-        <% end %>
-        <p><%= comment.content%></p>
+        </p>
       </td>
     </tr>
   </table>

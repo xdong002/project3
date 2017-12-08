@@ -1,4 +1,4 @@
-<!-- <div class="container">
+<div class="container">
   <div class="sessionHeaderBox">
 
     <div class="sessionHeader">
@@ -46,16 +46,19 @@
     <% end %>
   </div>
   <% if current_user != nil%>
-  <%= form_with scope: :topic, url: "/topics" do |f| %>
+  <%= form_with scope: :topic, url: "topics" do |f| %>
     <div>
       <%= f.text_field :title, placeholder: "Title" %>
     </div>
     <div>
       <%= f.text_area :content, placeholder: "Content" %>
     </div>
+    <div>
+      <%= f.hidden_field :room_id, :value => "#{@room.id}"%>
+    </div>
 
     <%= f.submit %>
   <% end %>
   <% end %>
 
-</div> -->
+</div>
