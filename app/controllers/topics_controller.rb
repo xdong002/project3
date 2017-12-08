@@ -29,6 +29,7 @@ class TopicsController < ApplicationController
       @user = current_user
     end
     @topic = Topic.find_by_id(params[:id])
+    @comments = @topic.comments
   end
 
   def edit
@@ -39,8 +40,6 @@ class TopicsController < ApplicationController
     end
 
     @topic = Topic.find_by_id(params[:id])
-    puts current_user.id
-    puts @topic.owner_id
     if (current_user.id.to_s != @topic.owner_id)
       flash[:error] = 'Stop Hacking!'
       redirect_to '/'
@@ -50,7 +49,9 @@ class TopicsController < ApplicationController
   def update
     @topic = Topic.find_by_id(params[:id])
     @topic.update_attributes(topic_params)
-    redirect_to topics_path(@topic)
+    if @topic.save
+      redirect_to topics_path(@topic)
+    end
   end
 
   def destroy

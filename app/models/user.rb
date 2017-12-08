@@ -2,6 +2,7 @@ class User < ApplicationRecord
   validates :username, presence: true, uniqueness: true, length: {minimum: 3}
   has_secure_password
   has_many :topics
+  has_many :comments
 
   def self.confirm(params)
     @user = User.find_by({username: params[:username]})

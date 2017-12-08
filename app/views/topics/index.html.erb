@@ -33,21 +33,13 @@
       <h1 class="topicTitle"><%= topic.title %></h1>
       <br>
       <p class="topicContent"><%= topic.content %></p>
-    <% end %>
       <p class="float-right">Created By: <%= topic.owner_name %></p>
-      <% if @user.id.to_s === topic.owner_id %>
-        <%= link_to topic_destroy_path(topic, :id => topic.id), controller: 'topics', action: 'destroy', method: :delete, data: {confirm: 'Delete this topic?'} do %>
-          <span class="glyphicon glyphicon-trash float-right" title = "Delete topic"> </span>
-        <% end %>
-        <%= link_to edit_topic_path(topic, :id => topic.id), controller: 'topics', action: 'get' do %>
-          <span class="glyphicon glyphicon-pencil float-right" title = "Edit topic"> </span>
-        <% end %>
-      <% end %>
     </div>
+
     <% end %>
-
+    <% end %>
   </div>
-
+  <% if current_user != nil%>
   <%= form_with scope: :topic, url: "/topics" do |f| %>
     <div>
       <%= f.text_field :title, placeholder: "Title" %>
@@ -57,6 +49,7 @@
     </div>
 
     <%= f.submit %>
+  <% end %>
   <% end %>
 
 </div>
