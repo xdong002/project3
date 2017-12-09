@@ -1,4 +1,7 @@
 <div class="container">
+  <ol class="breadcrumb">
+    <li><a href="/">Home</a></li>
+  </ol>
   <div class="searchBar">
     <div id="custom-search-input">
           <div class="input-group">
@@ -12,7 +15,7 @@
       </div>
   </div>
 
-  <div class="welcomeImage" style="width:80%; margin: 3% auto;">
+  <div class="welcomeImage" style="width:80%; margin: 0 auto; margin-bottom: 3%;">
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
       <!-- Indicators -->
       <ol class="carousel-indicators">
@@ -60,9 +63,9 @@
   <div class="sessionsRenderBox">
     <div class="panel panel-warning">
       <%= link_to room_path(room.id) do %>
-      <div class="panel-heading">:::<%= room.name %>:::</div>
+        <div class="panel-heading">:::<%= room.name %>:::</div>
       <% end %>
-      <%room.topics.sort.take(6).each do |t|%>
+      <%room.topics.sort.reverse.take(6).each do |t|%>
         <%= link_to topic_path(t.id) do %>
           <div class="panel-footer"><%= t.title %></div>
         <% end %>

@@ -31,6 +31,7 @@ class TopicsController < ApplicationController
     end
     @topic = Topic.find_by_id(params[:id])
     @comments = @topic.comments
+    @room = Room.find_by_id(@topic.room_id)
   end
 
   def edit

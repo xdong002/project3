@@ -1,4 +1,8 @@
 <div class="container">
+  <ol class="breadcrumb">
+    <li><a href="/">Home</a></li>
+    <li><%= link_to "#{@room.name}", room_path(@room.id) %></li>
+  </ol>
   <div class="sessionHeaderBox">
 
     <div class="sessionHeader">
