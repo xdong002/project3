@@ -56,26 +56,20 @@
     </div>
   </div>
 
+  <% @rooms.each do |room| %>
   <div class="sessionsRenderBox">
-    <% @rooms.each do |room| %>
-    <%= link_to room_path(room.id) do %>
-      <div>
-        <h3><%= room.name %></h3>
-        <%= room.id %>
-      </div>
-      <br>
-    <% end %>
-    <% end %>
+    <div class="panel panel-warning">
+      <%= link_to room_path(room.id) do %>
+      <div class="panel-heading">:::<%= room.name %>:::</div>
+      <% end %>
+      <%room.topics.sort.take(6).each do |t|%>
+        <%= link_to topic_path(t.id) do %>
+          <div class="panel-footer"><%= t.title %></div>
+        <% end %>
+      <% end %>
+    </div>
 
   </div>
-  <div class="sessionsRenderBox">
-
-  </div>
-  <div class="sessionsRenderBox">
-
-  </div>
-  <div class="sessionsRenderBox">
-
-  </div>
+  <% end %>
 
 </div>
