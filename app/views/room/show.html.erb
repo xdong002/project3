@@ -32,30 +32,35 @@
 
   <div class="topicsContainer">
     <% @topics.reverse.each do |topic| %>
-    <%= link_to url_for(action: 'show', controller: 'topics', id: "#{topic.id}") do %>
     <div class="topicBox">
-      <h1 class="topicTitle"><%= topic.title %></h1>
+      <%= link_to url_for(action: 'show', controller: 'topics', id: "#{topic.id}") do %>
+        <h1 class="topicTitle"><%= topic.title %></h1>
+      <% end %>
       <br>
       <p class="topicContent"><%= topic.content %></p>
-      <p class="float-right">Created By: <%= topic.owner_name %></p>
+        <p class="float-right">Created By:
+          <%= link_to user_path(topic.owner_id) do %>
+            <%= topic.owner_name %>
+          <% end %>
+        </p>
+      <p class="float-right" style="margin-right:2%;" title="Comments"><%= topic.comments.length %></p>
+      <p class="float-right glyphicon glyphicon-comment" style="margin-right:5px;" title="Comments"></p>
       <br>
       <%if topic.created_at === topic.updated_at%>
         <p class="float-right"><%= topic.created_at %></p>
       <%else%>
-        <p class="float-right">Last updated at: <%= topic.updated_at %></p>
+        <p class="float-right">Updated at: <%= topic.updated_at %></p>
       <%end%>
     </div>
-
-    <% end %>
     <% end %>
   </div>
   <% if current_user != nil%>
   <%= form_with scope: :topic, url: "topics" do |f| %>
     <div>
-      <%= f.text_field :title, placeholder: "Title" %>
+      <%= f.text_field :title, placeholder: "Title", style: "width:80%; opacity:.8;" %>
     </div>
     <div>
-      <%= f.text_area :content, placeholder: "Content" %>
+      <%= f.text_area :content, placeholder: "Content", style: "width:80%; height:30vh; opacity:.8;" %>
     </div>
     <div>
       <%= f.hidden_field :room_id, :value => "#{@room.id}"%>

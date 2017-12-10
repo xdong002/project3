@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   post '/users', to: 'users#create'
   get '/users/:id', to: 'users#show', as: 'user'
+  get '/users/:id/topics', to: 'users#showtopics', as: 'user_topics'
 
   get '/login', to: 'sessions#new'
   post '/sessions', to: 'sessions#create'

@@ -22,10 +22,16 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by_id(params[:id])
-    if (current_user != @user)
-      flash[:error] = 'Stop Hacking!'
-      redirect_to '/'
-    end
+    @topics = @user.topics
+    # if (current_user != @user)
+    #   flash[:error] = 'Stop Hacking!'
+    #   redirect_to '/'
+    # end
+  end
+
+  def showtopics
+    @user = User.find_by_id(params[:id])
+    @topics = @user.topics
   end
 
 

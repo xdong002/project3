@@ -1,0 +1,27 @@
+<div class="container">
+  <ol class="breadcrumb">
+    <li><a href="/">Home</a></li>
+    <li><%= link_to "#{@user.username}'s Profile", user_path(@user.id) %></li>
+  </ol>
+  <div class="profileContainer">
+    <div class="profileHeader">
+      <img src="<%= asset_path("gameIcon.png") %>" class="profileIcon"></img>
+      <h1 class="profileName"><%= @user.username%> <span>--- Profile</span></h1>
+    </div>
+
+    <div class="profileBody">
+      <div class="profileInfo">
+        <% @topics.reverse.each do |topic| %>
+        <div class="topicBox">
+          <%= link_to url_for(action: 'show', controller: 'topics', id: "#{topic.id}") do %>
+            <h1 class="profileTopicTitle"><%= topic.title %></h1>
+          <% end %>
+          <br>
+          <p class="topicContent"><%= topic.content %></p>
+          <p class="float-right commentLine" style="margin-right:2%;" title="Comments"><%= topic.comments.length %> comments</p>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
