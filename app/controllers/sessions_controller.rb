@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     if @user
       login(@user)
       flash[:notice] = "Successfully logged in."
-      redirect_to @user
+      redirect_to '/'
     else
       flash[:error] = "Incorrect Username or Password."
       redirect_to login_path

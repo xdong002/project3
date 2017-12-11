@@ -4,10 +4,15 @@ Rails.application.routes.draw do
   post '/users', to: 'users#create'
   get '/users/:id', to: 'users#show', as: 'user'
   get '/users/:id/topics', to: 'users#showtopics', as: 'user_topics'
+  get '/users/:id/messages', to: 'users#showmessage', as: 'user_message'
+  get '/users/:id/sendmessages', to: 'users#showsendmessage', as: 'user_message_send'
 
   get '/login', to: 'sessions#new'
   post '/sessions', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
+
+  # get '/messages', to: 'message#index'
+  post '/messages', to: 'message#create'
 
   get '/rooms', to: 'room#index'
   get '/rooms/new', to: 'room#new'

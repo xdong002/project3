@@ -7,6 +7,11 @@
     <div class="profileHeader">
       <img src="<%= asset_path("gameIcon.png") %>" class="profileIcon"></img>
       <h1 class="profileName"><%= @user.username%> <span>--- Profile</span></h1>
+      <button class="btn btn-warning float-right" type="button" data-toggle="modal" data-target="#myModalMessage">Sent Message</button>
+      <% if current_user.id.to_s === @user.id.to_s%>
+        <%= button_to("Messages received", user_message_path, method: :get, :class => "btn btn-warning")%>
+        <%= button_to("Messages send", user_message_send_path, method: :get, :class => "btn btn-warning")%>
+      <% end %>
     </div>
 
     <div class="profileBody">
@@ -25,3 +30,43 @@
     </div>
   </div>
 </div>
+
+<!-- Modal for message -->
+  <div class="modal fade" id="myModalMessage" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      <!-- Modal Header -->
+        <div class="modal-header">
+            <button type="button" class="close"
+               data-dismiss="modal">
+                   <span aria-hidden="true">&times;</span>
+                   <span class="sr-only">Close</span>
+            </button>
+            <h4 class="modal-title">
+                Message
+            </h4>
+        </div>
+
+        <!-- Modal Body -->
+        <div class="modal-body">
+            <%= form_for @message do |f| %>
+            <div>
+              <%= f.text_field :receiver_name, placeholder: "receiver", :value => "#{@user.username}" %>
+            </div>
+            <div>
+              <%= f.text_area :content, placeholder: "Content" %>
+            </div>
+            <%= f.submit "Sent", :class => "btn btn-default"%>
+            <%end%>
+        </div>
+
+        <!-- Modal Footer -->
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default"
+                    data-dismiss="modal">
+                        Close
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -23,6 +23,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by_id(params[:id])
     @topics = @user.topics
+    @message = Message.new
     # if (current_user != @user)
     #   flash[:error] = 'Stop Hacking!'
     #   redirect_to '/'
@@ -32,6 +33,19 @@ class UsersController < ApplicationController
   def showtopics
     @user = User.find_by_id(params[:id])
     @topics = @user.topics
+    @message = Message.new
+  end
+
+  def showmessage
+    @user = User.find_by_id(params[:id])
+    @message = Message.new
+    @receive_message = Message.where(:receiver_name => "#{@user.username}")
+  end
+
+  def showsendmessage
+    @user = User.find_by_id(params[:id])
+    @message = Message.new
+    @send_message = Message.where(:sender_name => "#{@user.username}")
   end
 
 

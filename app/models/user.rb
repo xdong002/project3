@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_secure_password
   has_many :topics
   has_many :comments
+  has_many :messages
 
   def self.confirm(params)
     @user = User.find_by({username: params[:username]})
