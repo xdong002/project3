@@ -2,20 +2,8 @@
   <ol class="breadcrumb">
     <li><a href="/">Home</a></li>
   </ol>
-  <div class="searchBar">
-    <div id="custom-search-input">
-          <div class="input-group">
-              <input type="text" class="  search-query form-control" placeholder="Search" />
-              <span class="input-group-btn">
-                  <button class="btn btn-danger" type="button">
-                      <span class=" glyphicon glyphicon-search"></span>
-                  </button>
-              </span>
-          </div>
-      </div>
-  </div>
 
-  <div class="welcomeImage" style="width:80%; margin: 0 auto; margin-bottom: 3%;">
+  <div class="welcomeImage" style="width:80%; margin: 0 auto; margin-top: 2%;">
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
       <!-- Indicators -->
       <ol class="carousel-indicators">
@@ -59,6 +47,19 @@
     </div>
   </div>
 
+<div class="searchBar">
+  <div id="sessionSearch" style="margin:3%;">
+    <%= form_with url: search_path, id:"sessionSearch" do |form| %>
+        <div class="input-group">
+          <%= form.text_field(:search, class: 'search-query form-control') %>
+        <div class="input-group-btn">
+          <button class="btn btn-danger" type:'submit'><span class="glyphicon glyphicon-search"></span></button>
+        </div>
+      </div>
+    <% end %>
+    </div>
+</div>
+
   <% @rooms.each do |room| %>
   <div class="sessionsRenderBox">
     <div class="panel panel-warning">
@@ -67,7 +68,11 @@
       <% end %>
       <%room.topics.sort.reverse.take(6).each do |t|%>
         <%= link_to topic_path(t.id) do %>
-          <div class="panel-footer"><%= t.title %></div>
+          <div class="panel-footer">
+            <%= t.title %>
+            <p class="float-right" style="margin-right:2%;" title="Comments"><%= t.comments.length %></p>
+            <p class="float-right glyphicon glyphicon-comment" style="margin-right:5px;" title="Comments"></p>
+          </div>
         <% end %>
       <% end %>
     </div>

@@ -1,0 +1,31 @@
+<div class="container">
+  <ol class="breadcrumb">
+    <li><a href="/">Home</a></li>
+  </ol>
+
+  <div class="topicsContainer">
+    <% @search_topics.reverse.each do |topic| %>
+    <div class="topicBox">
+      <%= link_to url_for(action: 'show', controller: 'topics', id: "#{topic.id}") do %>
+        <h1 class="topicTitle"><%= topic.title %></h1>
+      <% end %>
+      <br>
+      <p class="topicContent"><%= topic.content %></p>
+        <p class="float-right">Created By:
+          <%= link_to user_path(topic.owner_id) do %>
+            <%= topic.owner_name %>
+          <% end %>
+        </p>
+      <p class="float-right" style="margin-right:2%;" title="Comments"><%= topic.comments.length %></p>
+      <p class="float-right glyphicon glyphicon-comment" style="margin-right:5px;" title="Comments"></p>
+      <br>
+      <%if topic.created_at === topic.updated_at%>
+        <p class="float-right"><%= topic.created_at %></p>
+      <%else%>
+        <p class="float-right">Updated at: <%= topic.updated_at %></p>
+      <%end%>
+    </div>
+    <% end %>
+  </div>
+
+</div>

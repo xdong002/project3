@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   post '/sessions', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
 
+  post '/search', to: 'search#search', as:'search'
+  get '/search/:search', to: 'search#show', as: 'search_result'
+
   # get '/messages', to: 'message#index'
   post '/messages', to: 'message#create'
   patch '/users/:id/messages/destroy/send/:id', to: 'message#notshowsendmessage', as: 'message_notshow_send'
