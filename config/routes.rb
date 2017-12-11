@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   get '/rooms', to: 'room#index'
   get '/rooms/new', to: 'room#new'
   post '/rooms', to: 'room#create'
-  patch '/rooms/:id', to: 'room#show', as: 'room'
+  get '/rooms/:id', to: 'room#show', as: 'room'
 
   # get '/rooms/:id', to: 'topics#index'
   post '/rooms/:id', to: 'topics#create'
