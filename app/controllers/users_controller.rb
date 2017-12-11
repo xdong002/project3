@@ -48,6 +48,12 @@ class UsersController < ApplicationController
     @send_message = Message.where(:sender_name => "#{@user.username}")
   end
 
+  # def destroymessage
+  #   @user = User.find_by_id(params[:id])
+  #   @message = Message.find(params[:message_id])
+  #   @user.messages.delete(@message)
+  # end
+
 
   private
 

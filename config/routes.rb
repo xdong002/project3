@@ -13,11 +13,13 @@ Rails.application.routes.draw do
 
   # get '/messages', to: 'message#index'
   post '/messages', to: 'message#create'
+  patch '/users/:id/messages/destroy/send/:id', to: 'message#notshowsendmessage', as: 'message_notshow_send'
+  patch '/users/:id/messages/destroy/receive/:id', to: 'message#notshowreceivemessage', as: 'message_notshow_receive'
 
   get '/rooms', to: 'room#index'
   get '/rooms/new', to: 'room#new'
   post '/rooms', to: 'room#create'
-  get '/rooms/:id', to: 'room#show', as: 'room'
+  patch '/rooms/:id', to: 'room#show', as: 'room'
 
   # get '/rooms/:id', to: 'topics#index'
   post '/rooms/:id', to: 'topics#create'

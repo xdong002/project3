@@ -17,10 +17,15 @@
     <div class="profileBody">
       <div class="profileInfo">
         <% @receive_message.each do |m|%>
-          <div class="messageBox">
-            <p><%=m.content%></p>
-            <p class="lower-right">Send By: <%=m.sender_name%></p>
-          </div>
+          <% if m.receiver_show != nil%>
+            <div class="messageBox">
+              <p><%=m.content%></p>
+              <p class="lower-right">Send By: <%=m.sender_name%></p>
+              <%= link_to message_notshow_receive_path(m, :id => m.id), controller: 'message', action: 'notshowreceivemessage', method: :patch, data: {confirm: 'Delete this message?'}, :class => "toolBTN float-right" do %>
+                <span class="glyphicon glyphicon-trash" title = "Delete message"> </span>
+              <% end %>
+            </div>
+          <%end%>
         <%end%>
       </div>
     </div>
