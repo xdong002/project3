@@ -28,6 +28,9 @@ class CommentsController < ApplicationController
     @comment.owner_name = current_user.username
     if @comment.save
       redirect_back(fallback_location: root_path)
+    else
+      flash[:alert] = @comment.errors.full_messages.join(' ')
+      redirect_back(fallback_location: root_path)
     end
   end
 

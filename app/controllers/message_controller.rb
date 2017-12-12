@@ -29,7 +29,7 @@ class MessageController < ApplicationController
     @message.receiver_show = @message[:receiver_name]
 
     if User.find_by(username: @message[:receiver_name]) != nil
-      puts "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa: #{@message}"
+      flash[:success] = "Message send"
       @message.save
       redirect_back(fallback_location: root_path)
     else

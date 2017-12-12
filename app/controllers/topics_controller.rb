@@ -20,6 +20,9 @@ class TopicsController < ApplicationController
     current_user.topics << @topic
     if @topic.save
       redirect_to room_path(@topic.room_id)
+    else
+      flash[:alert] = @topic.errors.full_messages.join(' ')
+      redirect_to room_path(@topic.room_id)
     end
   end
 

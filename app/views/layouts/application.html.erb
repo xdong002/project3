@@ -15,7 +15,7 @@
   <body>
   <header>
     <div class="headerLogo">
-
+      <a href="/"><img class="mainLogo" src="<%= asset_path("galogo.png") %>"></a>
     </div>
 
     <div class="userSession">
@@ -35,9 +35,9 @@
         <%= value %>
       </div>
     <% end %>
-    <img src='<%=image_path("banner.jpg")%>' class="banner">
-    <br>
-    <br>
+
+    <img src='<%=image_path("banner.jpg")%>' class="banner" style="margin-bottom: 1.5%">
+
     <%= yield %>
 
     <footer>
@@ -67,9 +67,9 @@
                 <%= f.text_field :username, placeholder: "Username" %>
               </div>
               <div>
-                <%= f.password_field :password, placeholder: "Password" %>
+                <%= f.password_field :password, placeholder: "Password", style: "margin-top:2%" %>
               </div>
-              <%= f.submit "Log In", :class => "btn btn-default"%>
+              <%= f.submit "Log In", :class => "btn btn-default", style: "margin-top:2%"%>
               <%end%>
           </div>
 
@@ -107,9 +107,9 @@
                   <%= f.text_field :username, placeholder: "UserName" %>
                 </div>
                 <div>
-                  <%= f.password_field :password, placeholder: "Password" %>
+                  <%= f.password_field :password, placeholder: "Password", style: "margin-top:2%" %>
                 </div>
-                <%= f.submit "Sign up", :class => "btn btn-default"%>
+                <%= f.submit "Sign up", :class => "btn btn-default", style: "margin-top:2%" %>
                 <%end%>
             </div>
 

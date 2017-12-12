@@ -52,13 +52,14 @@
         <!-- Modal Body -->
         <div class="modal-body">
             <%= form_for @message do |f| %>
+            <p>Sent to:</p>
             <div>
               <%= f.text_field :receiver_name, placeholder: "receiver", :value => "#{@user.username}" %>
             </div>
             <div>
-              <%= f.text_area :content, placeholder: "Content" %>
+              <%= f.text_area :content, placeholder: "Content", style: "width:80%; height:20vh; margin-top:2%" %>
             </div>
-            <%= f.submit "Sent", :class => "btn btn-default"%>
+            <%= f.submit "Sent", :class => "btn btn-default", style: "margin-top:2%"%>
             <%end%>
         </div>
 
