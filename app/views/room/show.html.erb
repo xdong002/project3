@@ -55,10 +55,10 @@
   <% if current_user != nil%>
   <%= form_with scope: :topic, url: "topics" do |f| %>
     <div>
-      <%= f.text_field :title, placeholder: "Title", style: "width:80%; opacity:.8;" %>
+      <%= f.text_field :title, placeholder: "Title", style: "width:80%; opacity:.9; margin-top:3%;" %>
     </div>
     <div>
-      <%= f.text_area :content, placeholder: "Content", style: "width:80%; height:30vh; opacity:.8;" %>
+      <%= f.text_area :content, placeholder: "Content", style: "width:80%; height:30vh; opacity:.9;" %>
     </div>
     <div>
       <%= f.hidden_field :room_id, :value => "#{@room.id}"%>

@@ -7,8 +7,10 @@
     <div class="profileHeader">
       <img src="<%= asset_path("gameIcon.png") %>" class="profileIcon"></img>
       <h1 class="profileName"><%= @user.username%> <span>--- Profile</span></h1>
-      <button class="btn btn-warning float-right" type="button" data-toggle="modal" data-target="#myModalMessage">Sent Message</button>
-      <% if current_user.id.to_s === @user.id.to_s%>
+      <% if current_user != nil%>
+        <button class="btn btn-warning float-right" type="button" data-toggle="modal" data-target="#myModalMessage">Sent Message</button>
+      <%end%>
+      <% if current_user != nil && current_user.id.to_s === @user.id.to_s%>
         <%= button_to("Messages received", user_message_path, method: :get, :class => "btn btn-warning")%>
         <%= button_to("Messages send", user_message_send_path, method: :get, :class => "btn btn-warning")%>
       <% end %>
