@@ -20,13 +20,44 @@
       <div class="profileInfo">
         <% @receive_message.each do |m|%>
           <% if m.receiver_show != nil%>
-            <div class="messageBox">
-              <p><%=m.content%></p>
+            <div class="messageBox" >
+              <div class="messageShow" data-toggle="modal" data-target="#showMessage<%=m.id%>"><%=m.content%></div>
               <p class="lower-right">Send By: <%=m.sender_name%></p>
               <%= link_to message_notshow_receive_path(m, :id => m.id), controller: 'message', action: 'notshowreceivemessage', method: :patch, data: {confirm: 'Delete this message?'}, :class => "toolBTN float-right" do %>
                 <span class="glyphicon glyphicon-trash" title = "Delete message"> </span>
               <% end %>
             </div>
+            <!-- Modal for showmessage -->
+            <div class="modal fade" id="showMessage<%=m.id%>" role="dialog">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <!-- Modal Header -->
+                  <div class="modal-header">
+                    <button type="button" class="close"
+                    data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                  </button>
+                  <h4 class="modal-title">
+                    Send by: <%=m.sender_name%>
+                  </h4>
+                </div>
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+                  <p><%=m.content%><p>
+                  </div>
+
+                  <!-- Modal Footer -->
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default"
+                    data-dismiss="modal">
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
           <%end%>
         <%end%>
       </div>

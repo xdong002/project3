@@ -21,7 +21,7 @@
         <% @send_message.each do |m|%>
          <% if m.sender_show != nil%>
           <div class="messageBox">
-            <p><%=m.content%></p>
+            <div class="messageShow"><%=m.content%></div>
             <p class="lower-right">Send To: <%=m.receiver_name%></p>
             <%= link_to message_notshow_send_path(m, :id => m.id), controller: 'message', action: 'notshowsendmessage', method: :patch, data: {confirm: 'Delete this message?'}, :class => "toolBTN float-right" do %>
               <span class="glyphicon glyphicon-trash" title = "Delete message"> </span>
