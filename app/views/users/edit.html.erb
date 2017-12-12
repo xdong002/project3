@@ -1,0 +1,36 @@
+<div class="container">
+  <ol class="breadcrumb">
+    <li><a href="/">Home</a></li>
+  </ol>
+  <div class="profileContainer">
+    <div class="profileHeader">
+      <img src="<%= asset_path("gameIcon.png") %>" class="profileIcon"></img>
+      <h1 class="profileName"><%= @user.username%> <span>--- Profile</span></h1>
+    </div>
+
+    <div class="profileBody">
+      <div class="profileInfo">
+        <%= form_for @user do |f| %>
+          <div class="">
+            <h1>Name:</h1>
+            <%= f.text_field :name %>
+          </div>
+          <div class="">
+            <p style= "margin-top:1%;">Email:</p>
+            <%= f.text_field :email %>
+          </div>
+          <div class="">
+            <p style= "margin-top:1%;">Gender:</p>
+            <%= f.select :gender, ['Male','Female','Not sure'] %>
+          </div>
+          <div class="">
+            <p style= "margin-top:1%;">Description:</p>
+            <%= f.text_area :description %>
+          </div>
+          <%= f.submit "Save", style: "margin-top:1%" %>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+</div>

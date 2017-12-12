@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get '/users/:id/topics', to: 'users#showtopics', as: 'user_topics'
   get '/users/:id/messages', to: 'users#showmessage', as: 'user_message'
   get '/users/:id/sendmessages', to: 'users#showsendmessage', as: 'user_message_send'
+  get '/users/:id/edit', to: 'users#edit', as: 'edit_user'
+  patch "/users/:id", to: "users#update"
 
   get '/login', to: 'sessions#new'
   post '/sessions', to: 'sessions#create'
