@@ -23,7 +23,7 @@
   <div class="indexBottom">
   <% @rooms.each do |room| %>
   <div class="sessionsRenderBox">
-    <div class="panel panel-warning">
+    <div class="panel panel-default">
       <%= link_to room_path(room.id) do %>
         <div class="panel-heading">:::<%= room.name %>:::</div>
       <% end %>

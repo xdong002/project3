@@ -6,8 +6,10 @@
   <table style="width:100%">
     <tr class="floor">
       <td class="authorBox">
+        <%= link_to user_path(@topic.owner_id) do %>
         <img src="<%= asset_path("gameIcon.png") %>" class="gameHeadIcon">
-        <h1><%= @topic.owner_name %></h1>
+          <h1><%= @topic.owner_name %></h1>
+        <% end %>
       </td>
       <td class="contentBox">
         <h1><%= @topic.title %></h1>
@@ -29,8 +31,10 @@
   <table style="width:100%">
     <tr class="floor">
       <td class="authorBox">
+        <%= link_to user_path(comment.owner_id) do %>
         <img src="<%= asset_path("gameIcon.png") %>" class="gameHeadIcon">
         <h1><%= comment.owner_name%></h1>
+        <%end%>
       </td>
       <td class="contentBox">
         <p><%= comment.content%>

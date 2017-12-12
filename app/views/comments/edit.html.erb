@@ -1,6 +1,9 @@
-<div>
+<div class="container">
 <%= form_for @comment do |f| %>
-  <%= f.text_area :content, style: "margin-top:2%" %>
-  <%= f.submit "Save", style: "margin-top:2%" %>
+  <div class="">
+    <p>Content:</p>
+    <%= f.text_area :content, style: "margin-top:1%;width:80%; height:30vh;" %>
+  </div>
+  <%= f.submit "Save", style: "margin-top:%" %>
 <% end %>
 </div>
