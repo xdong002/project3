@@ -49,7 +49,7 @@ class RoomController < ApplicationController
 
   def update
     @room = Room.find_by_id(params[:id])
-    @room.update_attributes(params.require(:room).permit(:name, :description))
+    @room.update_attributes(params.require(:room).permit(:name, :description, :icon))
     if @room.save
       redirect_to '/'
     end

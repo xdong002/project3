@@ -17,7 +17,7 @@
 
     <div class="profileBody">
       <div class="profileInfo">
-        <%if current_user != nil && current_user.id === @user.id%>
+        <%if current_user.id === @user.id%>
           <%= link_to edit_user_path(@user, :id => @user.id), controller: 'users', action: 'get' do %>
             <span class="glyphicon glyphicon-pencil" title = "Edit information"> </span>
           <% end %>
