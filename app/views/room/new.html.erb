@@ -1,13 +1,15 @@
-<%if current_user != nil && current_user.id === 1%>
+<div class="container">
+  <%if current_user != nil && current_user.id === 1%>
   <%= form_for @room do |f| %>
-    <div>
-      <%= f.text_field :name, placeholder: "Name" %>
-    </div>
-    <div>
-      <%= f.text_area :description, placeholder: "description" %>
-    </div>
-    <%= f.submit %>
+  <div>
+    <%= f.text_field :name, placeholder: "Name" %>
+  </div>
+  <div>
+    <%= f.text_area :description, placeholder: "description" %>
+  </div>
+  <%= f.submit %>
   <% end %>
-<%else%>
+  <%else%>
   <p>"User not allowed"</p>
-<%end%>
+  <%end%>
+</div>

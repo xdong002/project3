@@ -25,6 +25,9 @@ Rails.application.routes.draw do
   get '/rooms/new', to: 'room#new'
   post '/rooms', to: 'room#create'
   get '/rooms/:id', to: 'room#show', as: 'room'
+  get '/rooms/:id/edit', to: 'room#edit', as: 'edit_room'
+  patch '/rooms/:id', to: 'room#update'
+  delete '/rooms/destroy/:id', to: 'room#destroy', as: 'room_destroy'
 
   # get '/rooms/:id', to: 'topics#index'
   post '/rooms/:id', to: 'topics#create'

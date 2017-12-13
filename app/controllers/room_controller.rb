@@ -38,6 +38,29 @@ class RoomController < ApplicationController
     @topics = @room.topics
   end
 
+  def edit
+    if current_user == nil
+      @user = User.new
+    else
+      @user = current_user
+    end
+    @room = Room.find_by_id(params[:id])
+  end
+
+  def update
+    @room = Room.find_by_id(params[:id])
+    @room.update_attributes(params.require(:room).permit(:name, :description))
+    if @room.save
+      redirect_to '/'
+    end
+  end
+
+  def destroy
+    @room = Room.find_by_id(params[:id])
+    @room.destroy
+    redirect_to '/'
+  end
+
   private
 
   def room_params

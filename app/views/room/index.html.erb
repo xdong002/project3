@@ -24,6 +24,14 @@
   <% @rooms.each do |room| %>
   <div class="sessionsRenderBox">
     <div class="panel panel-default">
+      <%if current_user != nil && current_user.id.to_s === '1'%>
+        <%= link_to edit_room_path(room, :id => room.id), controller: 'room', action: 'get', :class => "toolBTN float-right" do %>
+          <span class="glyphicon glyphicon-pencil" title = "Edit room"> </span>
+        <% end %>
+        <%= link_to room_destroy_path(room, :id => room.id), controller: 'room', action: 'destroy', method: :delete, data: {confirm: 'Delete this room?'}, :class => "toolBTN float-right" do %>
+          <span class="glyphicon glyphicon-trash" title = "Delete room"> </span>
+        <% end %>
+      <%end%>
       <%= link_to room_path(room.id) do %>
         <div class="panel-heading">:::<%= room.name %>:::</div>
       <% end %>

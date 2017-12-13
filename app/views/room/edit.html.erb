@@ -1,0 +1,13 @@
+<div class="container">
+  <%= form_for @room do |r| %>
+    <div class="">
+      <h1>Name:</h1>
+      <%= r.text_field :name %>
+    </div>
+    <div class="">
+      <p style= "margin-top:1%;">Description:</p>
+      <%= r.text_area :description, style: "width:80%; height:30vh;" %>
+    </div>
+    <%= r.submit "Save", style: "margin-top:1%" %>
+  <% end %>
+</div>
